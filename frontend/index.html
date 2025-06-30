@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App - Vue.js + Express.js</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <header>
+                <h1>📝 Todo List</h1>
+                <p>Built with Vue.js + Express.js</p>
+            </header>
+            
+            <div class="todo-input">
+                <input 
+                    v-model="newTodo" 
+                    @keyup.enter="addTodo" 
+                    placeholder="What needs to be done?"
+                    class="todo-input-field"
+                >
+                <button @click="addTodo" class="add-btn">Add Todo</button>
+            </div>
+            
+            <div class="todo-stats">
+                <span>Total: {{ todos.length }}</span>
+                <span>Completed: {{ completedCount }}</span>
+                <span>Pending: {{ pendingCount }}</span>
+            </div>
+            
+            <ul class="todo-list" v-if="todos.length > 0">
+                <li 
+                    v-for="todo in todos" 
+                    :key="todo.id" 
+                    :class="{ completed: todo.completed }"
+                    class="todo-item"
+                >
+                    <div class="todo-content">
+                        <input 
+                            type="checkbox" 
+                            :checked="todo.completed" 
+                            @change="toggleTodo(todo.id)"
+                            class="todo-checkbox"
+                        >
+                        <span class="todo-text">{{ todo.text }}</span>
+                    </div>
+                    <button @click="deleteTodo(todo.id)" class="delete-btn">🗑️</button>
+                </li>
+            </ul>
+            
+            <div v-else class="empty-state">
+                <p>No todos yet! Add one above to get started.</p>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 
