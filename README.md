@@ -169,14 +169,3 @@ Edit `frontend/app.js` to add new features:
 - **"Failed to add todo"** - Network or server error
 - **"Failed to update todo"** - Todo ID not found
 
-## 📝 License
-
-This project is open source and available under the [ISC License](LICENSE).
-
-## 🤝 Contributing
-
-Feel free to submit issues and enhancement requests!
-
----
-
-**Happy coding! 🎉** 
